@@ -47,7 +47,7 @@ A lightweight **FastAPI-based pipeline** that accepts an Excel file upload, exec
 ### 1. Create a virtual environment
 ```cmd
 python -m venv .venv
----
+```
 
 ### 2. Activate it
 ```cmd
