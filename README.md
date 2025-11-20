@@ -1,4 +1,4 @@
-# Forecast 
+# Forecast
 
 ## 📘 Notebook Pipeline
 
@@ -18,15 +18,11 @@ A lightweight **FastAPI-based pipeline** that accepts an Excel file upload, exec
 
 ## 📂 Project Structure
 
-.
 ├── app.py
 ├── Minor.ipynb
 ├── requirements.txt
 └── static/
 └── upload.html
-
-yaml
-Copy code
 
 ---
 
@@ -49,63 +45,52 @@ Copy code
 ## 🪟 Installation — Windows (CMD)
 
 ### 1. Create a virtual environment
+```cmd
 python -m venv .venv
-
-shell
-Copy code
+---
 
 ### 2. Activate it
+```cmd
 .venv\Scripts\activate
-
-shell
-Copy code
+---
 
 ### 3. Install dependencies
+```cmd
 pip install -r requirements.txt
-
-yaml
-Copy code
+---
 
 ---
 
 ## 🐧 Installation — macOS / Linux (Bash)
 
 ### 1. Create a virtual environment
+```bash
 python3 -m venv .venv
-
-shell
-Copy code
+---
 
 ### 2. Activate it
+```bash
 source .venv/bin/activate
-
-shell
-Copy code
+---
 
 ### 3. Install dependencies
+```bash
 pip install -r requirements.txt
-
-yaml
-Copy code
+---
 
 ---
 
 ## ▶️ Running the App
 
 Start the server:
-
+```cmd
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
-
-r
-Copy code
+---
 
 Open in browser:
-
+```
 http://localhost:8000/
-
-yaml
-Copy code
-
+```
 ---
 
 ## 🔌 API Usage
