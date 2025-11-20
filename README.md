@@ -88,22 +88,15 @@ Open in browser:
 http://localhost:8000/
 ```
 
-
 ## 📄 Notebook Output Requirements
 
 Your notebook must generate:
-
+```
 summary_report.pdf
-
-yaml
-Copy code
-
----
+```
 
 ## 🛠 Troubleshooting
 
 - PDF missing → Check `/status/<job_id>`  
 - Notebook crashed → See `error.txt` in job folder  
-- Long execution → Increase `EXEC_TIMEOUT`  
-
----
+- Long execution → Increase `EXEC_TIMEOUT`
