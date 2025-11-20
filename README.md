@@ -85,7 +85,8 @@ uvicorn app:app --host 127.0.0.1 --port 8000 --reload
 
 Open in browser:
 ```
-http://localhost:8000/
+http://localhost:127.0.0.1:8000/
+(http://127.0.0.1:8000 )
 ```
 
 ## 📄 Notebook Output Requirements
