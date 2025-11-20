@@ -1,116 +1,174 @@
-# Forecast
+# Forecast 
 
-📘 Notebook Pipeline — README
-🚀 What this project does
+## 📘 Notebook Pipeline
 
-This is a FastAPI-based notebook execution pipeline.
-Users upload an Excel file → the server copies a Jupyter notebook → executes it → generates outputs such as summary_report.pdf → returns it for download.
+A lightweight **FastAPI-based pipeline** that accepts an Excel file upload, executes a Jupyter notebook in an isolated job folder, and returns generated outputs such as `summary_report.pdf`.
 
-Core logic is inside app.py.
+---
 
-📁 Project structure
+## 🚀 What This Project Does
 
-You should have:
+- 📤 Accepts an uploaded Excel file  
+- 📁 Creates a unique job directory  
+- 📝 Copies and runs a Jupyter notebook  
+- 📄 Generates output files (PDF, executed notebook, etc.)  
+- 📥 Allows you to download results via API endpoints  
 
-app.py — FastAPI backend
+---
 
-Minor.ipynb — the notebook that gets executed
+## 📂 Project Structure
 
-requirements.txt — Python dependencies
+.
+├── app.py
+├── Minor.ipynb
+├── requirements.txt
+└── static/
+└── upload.html
 
-static/upload.html — simple web upload form (optional)
+yaml
+Copy code
 
-⚙️ Default configuration (in app.py)
+---
 
-NOTEBOOK_PATH = "Minor.ipynb"
+## ⚙️ Configuration (in `app.py`)
 
-EXPECTED_INPUT_FILENAME = "sales.xlsx"
+- `NOTEBOOK_PATH` → Notebook to execute (default: `Minor.ipynb`)  
+- `EXPECTED_INPUT_FILENAME` → Input filename expected by the notebook (`sales.xlsx`)  
+- `EXEC_TIMEOUT` → Timeout for notebook execution  
 
-EXEC_TIMEOUT = <number_of_seconds>
+---
 
-Make sure your notebook expects sales.xlsx, OR change the value in the code.
+## 🧩 Prerequisites
 
-🧩 Prerequisites
+- Python 3.10+  
+- pip  
+- (Optional) curl  
 
-Python 3.10+
+---
 
-pip
+## 🪟 Installation — Windows (CMD)
 
-🟦 Installation (Windows CMD)
-1. Create virtual environment
+### 1. Create a virtual environment
 python -m venv .venv
 
-2. Activate venv
+shell
+Copy code
+
+### 2. Activate it
 .venv\Scripts\activate
 
-3. Install dependencies
+shell
+Copy code
+
+### 3. Install dependencies
 pip install -r requirements.txt
 
-🟩 Installation (macOS / Linux — Bash)
-1. Create virtual environment
+yaml
+Copy code
+
+---
+
+## 🐧 Installation — macOS / Linux (Bash)
+
+### 1. Create a virtual environment
 python3 -m venv .venv
 
-2. Activate venv
+shell
+Copy code
+
+### 2. Activate it
 source .venv/bin/activate
 
-3. Install dependencies
+shell
+Copy code
+
+### 3. Install dependencies
 pip install -r requirements.txt
 
-▶️ Running the app
-Windows CMD
+yaml
+Copy code
+
+---
+
+## ▶️ Running the App
+
+Start the server:
+
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
 
-macOS / Linux (Bash)
-uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+r
+Copy code
 
-
-Now open in browser:
+Open in browser:
 
 http://localhost:8000/
 
+yaml
+Copy code
 
-Upload your Excel file → processing begins.
+---
 
-🧪 API Usage (Both Bash & Windows CMD)
-📤 Upload a file
-Bash
+## 🔌 API Usage
+
+### 📤 Upload a File
+
+**Bash**
 curl -F "file=@data/sales.xlsx" http://localhost:8000/upload
 
-CMD (double quotes slightly different)
+markdown
+Copy code
+
+**Windows CMD**
 curl -F "file=@data/sales.xlsx" http://localhost:8000/upload
 
-📊 Check job status
-Bash
+yaml
+Copy code
+
+---
+
+### 📊 Check Job Status
+
 curl http://localhost:8000/status/<job_id>
 
-CMD
-curl http://localhost:8000/status/<job_id>
+makefile
+Copy code
 
-📥 Download PDF
-Bash
+Example:
+{
+"exists": true,
+"ready": false,
+"produced_files": []
+}
+
+yaml
+Copy code
+
+---
+
+### 📥 Download Output PDF
+
 curl -o summary_report.pdf http://localhost:8000/download/<job_id>
 
-CMD
-curl -o summary_report.pdf http://localhost:8000/download/<job_id>
+yaml
+Copy code
 
-📄 What the notebook must produce
+---
 
-Inside each job folder, the notebook should generate:
+## 📄 Notebook Output Requirements
+
+Your notebook must generate:
 
 summary_report.pdf
 
+yaml
+Copy code
 
-You can change this filename in app.py if needed.
+---
 
-🛠 Troubleshooting
-❗ No PDF found
+## 🛠 Troubleshooting
 
-Check /status/<job_id> → see produced files.
+- PDF missing → Check `/status/<job_id>`  
+- Notebook crashed → See `error.txt` in job folder  
+- Long execution → Increase `EXEC_TIMEOUT`  
 
-❗ Notebook failing
-
-Look inside the job folder → error.txt contains traceback.
-
-❗ Long notebooks
-
-Increase EXEC_TIMEOUT in app.py.
+---
