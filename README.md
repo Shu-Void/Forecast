@@ -63,12 +63,12 @@ pip install -r requirements.txt
 
 ### 1. Create a virtual environment
 ```bash
-python3 -m venv .venv
+python -m venv .venv
 ```
 
 ### 2. Activate it
 ```bash
-source .venv/bin/activate
+.venv\Scripts\Activate.ps1
 ```
 
 ### 3. Install dependencies
