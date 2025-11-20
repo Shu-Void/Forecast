@@ -52,92 +52,42 @@ python -m venv .venv
 ### 2. Activate it
 ```cmd
 .venv\Scripts\activate
----
+```
 
 ### 3. Install dependencies
 ```cmd
 pip install -r requirements.txt
----
-
----
+```
 
 ## 🐧 Installation — macOS / Linux (Bash)
 
 ### 1. Create a virtual environment
 ```bash
 python3 -m venv .venv
----
+```
 
 ### 2. Activate it
 ```bash
 source .venv/bin/activate
----
+```
 
 ### 3. Install dependencies
 ```bash
 pip install -r requirements.txt
----
-
----
+```
 
 ## ▶️ Running the App
 
 Start the server:
 ```cmd
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
----
+```
 
 Open in browser:
 ```
 http://localhost:8000/
 ```
----
 
-## 🔌 API Usage
-
-### 📤 Upload a File
-
-**Bash**
-curl -F "file=@data/sales.xlsx" http://localhost:8000/upload
-
-markdown
-Copy code
-
-**Windows CMD**
-curl -F "file=@data/sales.xlsx" http://localhost:8000/upload
-
-yaml
-Copy code
-
----
-
-### 📊 Check Job Status
-
-curl http://localhost:8000/status/<job_id>
-
-makefile
-Copy code
-
-Example:
-{
-"exists": true,
-"ready": false,
-"produced_files": []
-}
-
-yaml
-Copy code
-
----
-
-### 📥 Download Output PDF
-
-curl -o summary_report.pdf http://localhost:8000/download/<job_id>
-
-yaml
-Copy code
-
----
 
 ## 📄 Notebook Output Requirements
 
